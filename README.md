@@ -37,13 +37,8 @@ Uploaded images are stored in /media/images/ directory.
 ## Structure of Project
 
 ```bash
-< PROJECT ROOT >
-	│   .gitattributes
-	│   .gitignore
-	│   db.sqlite3             # sqlite file
+< PROJECT ROOT >        # sqlite file
 	│   manage.py
-	│   Procfile
-	│   Procfile.windows
 	│   README.md
 	│   requirements.txt        # python libraries for this app.
 	│
@@ -58,22 +53,10 @@ Uploaded images are stored in /media/images/ directory.
 	│   ├───migrations
 	│   │
 	│   ├───views
-	│   │   │   add_recipe.py     # add recipe function
-	│   │   │   custome.py        # delete and edit recipe function
-	│   │   │   detail.py         # show details of one recipe
-	│   │   │   index.py          # show all maxerience
-	│   │   │   my_recipe.py      # show all maxerience that the user added.
-	│   │   │   search.py
 	│   │   │
 	│   │   ├───auth
 	│   │   │   │   login.py      # user login
 	│   │   │   │   signup.py     # user sign up
-	│   │   │   │
-	│   │   │   └───__pycache__
-	│   │   │
-	│   │   └───__pycache__
-	│   │
-	│   └───__pycache__
 	│
 	├───media
 	│   └───images
@@ -83,48 +66,10 @@ Uploaded images are stored in /media/images/ directory.
 	│   │   settings.py                    # main setting file of this app.
 	│   │   urls.py
 	│   │   wsgi.py
-	│   │   __init__.py
-	│   │
-	│   └───__pycache__
 	│
-	├───static
-	│   └───assets
-	│       ├───css
-	│       │       app.css                  # the main styles in this file.
-	│       │       bootstrap.min.css
-	│       │       bootstrap.min.css.map
-	│       │       icons.css
-	│       │       pace.min.css
-	│       │
-	│       ├───flags
-	│       │
-	│       ├───fonts
-	│       │
-	│       ├───images
-	│       │
-	│       ├───js
-	│       │       add_recipe.js                # add and edit function
-	│       │       app.js                       # scrolling and delete function
-	│       │       auth.js                      # sign up and sign in function
-	│       │       bootstrap.bundle.min.js
-	│       │       bootstrap.bundle.min.js.map
-	│       │       jquery.min.js
-	│       │       pace.min.js
-	│       │       tata.js
-	│       │       tinymce.min.js
-	│       │
-	│       └───plugins
-	│           ├───Drag-And-Drop                # plugin to drag and drop file
-	│           │
-	│           └───input-tags                   # plugin to input multiple words
+	├───static               # plugin to input multiple words
 	│
 	└───templates
-	        add-new.html  # template file to add and edit maxerience.
-	        detail.html   # template file to show details of maxerience.
-	        index.html    # template file to show cards of maxerience.
-	        layout.html   # main layout file to extend.
-	        signin.html   # sign-in page template file.
-	        signup.html   # sign-up page template file.
 ```
 
 ## Demo

@@ -11,9 +11,14 @@ class ChecklistsMaterialListView(View):
     def get(self, request):
         page_name = 'materialList'
         try:
-            page_content = PageContents.objects.filter(page_name=page_name)[0]
-            statusInit = json.loads(page_content.status)
-            ownerInit = json.loads(page_content.owners)
+            page_content = PageContents.objects.filter(page_name=page_name)
+            if page_content:
+                page_content = page_content[0]
+                statusInit = json.loads(page_content.status)
+                ownerInit = json.loads(page_content.owners)
+            else:
+                ownerInit = [1, 1, 7, 1, 1, 7, 7, 1, 1, 7, 7, 7, 7, 7, 1, 1, 1, 7, 7, 7, 7]
+                statusInit = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             id = [
                 '2', '2.1', '2.2', '2.3',
                 '3', '3.1', '3.2',
@@ -38,7 +43,6 @@ class ChecklistsMaterialListView(View):
             ]
             bold = [1, 0, 0, 0, 1, 0, 0, 1, 0, 1,
                     0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0]
-            # ownerInit = [1, 1, 7, 1, 1, 7, 7, 1, 1, 7, 7, 7, 7, 7, 1, 1, 1, 7, 7, 7, 7]
             owners = [
                 {"value": str("1"), "text": "Maxerience"},
                 {"value": str("2"), "text": "Global"},
@@ -52,7 +56,6 @@ class ChecklistsMaterialListView(View):
                 {"value": str("0"), "text": "Max & Provider"},
                 {"value": str("10"), "text": ""}
             ]
-            # statusInit = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             statuses = [
                 {"value": str("0"), "text": "Not Started"},
                 {"value": str("1"), "text": "In Progress"},

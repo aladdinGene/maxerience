@@ -28,7 +28,7 @@ class LoginView(View):
             return JsonResponse({'status': 403, 'message': 'Email is not valid'})
 
         user = auth.authenticate(
-            request, username=post_value['email'], password=post_value['password'])
+            request, username=post_value['email'], email=post_value['email'], password=post_value['password'])
 
         if user is not None:
             auth.login(request, user)

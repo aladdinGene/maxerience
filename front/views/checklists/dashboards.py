@@ -11,9 +11,14 @@ class ChecklistsDashboardsView(View):
     def get(self, request):
         page_name = 'dashboards'
         try:
-            page_content = PageContents.objects.filter(page_name=page_name)[0]
-            statusInit = json.loads(page_content.status)
-            ownerInit = json.loads(page_content.owners)
+            page_content = PageContents.objects.filter(page_name=page_name)
+            if page_content:
+                page_content = page_content[0]
+                statusInit = json.loads(page_content.status)
+                ownerInit = json.loads(page_content.owners)
+            else:
+                ownerInit = [5, 10, 5, 1, 1, 5, 1, 5, 1]
+                statusInit = [0, 0, 0, 0, 0, 0, 0, 0, 0]
             id = [
                 '1', '1', '1.1', '1.2', '1.3', '1', '1', '1.1', '1.2'
             ]
@@ -21,7 +26,6 @@ class ChecklistsDashboardsView(View):
                 "Requirements", "PBI Access", "&nbsp;Access request", "&nbsp;Access rights", "&nbsp;App Link", "Requirements", "Online Dashboard URL", "&nbsp;Access request", "&nbsp;User creation"
             ]
             bold = [1, 1, 0, 0, 0, 1, 1, 0, 0]
-            # ownerInit = [5, 10, 5, 1, 1, 5, 1, 5, 1]
             owners = [
                 {"value": str("1"), "text": "Maxerience"},
                 {"value": str("2"), "text": "Global"},
@@ -35,7 +39,6 @@ class ChecklistsDashboardsView(View):
                 {"value": str("0"), "text": "Max & Provider"},
                 {"value": str("10"), "text": ""}
             ]
-            # statusInit = [0, 0, 0, 0, 0, 0, 0, 0, 0]
             statuses = [
                 {"value": str("0"), "text": "Not Started"},
                 {"value": str("1"), "text": "In Progress"},

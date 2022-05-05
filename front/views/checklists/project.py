@@ -11,9 +11,16 @@ class ChecklistsProjectView(View):
     def get(self, request):
         page_name = 'project'
         try:
-            page_content = PageContents.objects.filter(page_name=page_name)[0]
-            statusInit = json.loads(page_content.status)
-            ownerInit = json.loads(page_content.owners)
+            page_content = PageContents.objects.filter(page_name=page_name)
+            if page_content:
+                page_content = page_content[0]
+                statusInit = json.loads(page_content.status)
+                ownerInit = json.loads(page_content.owners)
+            else:
+                ownerInit = [0, 10, 8, 8, 10, 1, 9, 10, 10, 5, 8, 8, 8, 8, 8, 8, 5, 1,
+                             5, 5, 10, 1, 1, 9, 0, 1, 1, 9, 1, 1, 5, 5, 10, 1, 1, 10, 5, 10, 8]
+                statusInit = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             id = [
                 '1', '1.1', '1.1.1', '1.1.2',
                 '2', '2.1', '2.2',
@@ -38,8 +45,6 @@ class ChecklistsProjectView(View):
             ]
             bold = [1, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1,
                     1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0]
-            # ownerInit = [0, 10, 8, 8, 10, 1, 9, 10, 10, 5, 8, 8, 8, 8, 8, 8, 5, 1,
-            #              5, 5, 10, 1, 1, 9, 0, 1, 1, 9, 1, 1, 5, 5, 10, 1, 1, 10, 5, 10, 8]
             owners = [
                 {"value": str("1"), "text": "Maxerience"},
                 {"value": str("2"), "text": "Global"},
@@ -53,8 +58,6 @@ class ChecklistsProjectView(View):
                 {"value": str("0"), "text": "Max & Provider"},
                 {"value": str("10"), "text": ""}
             ]
-            # statusInit = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            #               0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             statuses = [
                 {"value": str("0"), "text": "Not Started"},
                 {"value": str("1"), "text": "In Progress"},
@@ -68,31 +71,31 @@ class ChecklistsProjectView(View):
                 '<td align="left" class="pt-3-half" contenteditable="false">Definition of roles & responsibilities</td>',
                 '<td align="left" class="pt-3-half" contenteditable="false"></td>',
                 '<td align="left" class="pt-3-half" contenteditable="false"><button type="button" onclick="location.href = ' +
-                "'../Technical_Doc/Solution.html'" +
+                "'/solution'" +
                 '" class="btn btn-warning" style="width: 200px;">Solution Requirements</button></td>',
                 '<td align="left" class="pt-3-half" contenteditable="false"><button type="button" onclick="location.href = ' +
-                "'../Checklist/Material.html'" +
+                "'/material-list'" +
                 '" class="btn btn-warning" style="width: 200px;">Material</button></td>',
                 '<td align="left" class="pt-3-half" contenteditable="false"></td>',
                 '<td align="left" class="pt-3-half" contenteditable="false">Not applicable in countries where the app is already integrated / released</td>',
                 '<td align="left" class="pt-3-half" contenteditable="false"><button type="button" onclick="location.href = ' +
-                "'../index.html'" +
+                "'/payment-integration'" +
                 '" class="btn btn-warning" style="width: 200px;">Payment Integration</button></td>',
                 '<td align="left" class="pt-3-half" contenteditable="false" rowspan="5"><button type="button" onclick="location.href = ' +
-                "'../Checklist/payment.html'" +
+                "'/mobile-web-apps'" +
                 '" class="btn btn-warning" style="width: 200px; height: 130px; margin-top: 25px;">Mobile & Web Apps</button></td>',
                 '', '', '', '',
                 '<td align="left" class="pt-3-half" contenteditable="false"></td>',
                 '<td align="left" class="pt-3-half" contenteditable="false" rowspan="4"><button type="button" onclick="location.href = ' +
-                "'../Checklist/applications.html'" +
+                "'/master-data-model'" +
                 '" class="btn btn-warning" style="width: 200px; height: 100px; margin-top: 20px;">Master Data & Model</button></td>',
                 '', '', '',
                 '<td align="left" class="pt-3-half" contenteditable="false" rowspan="3"><button type="button" onclick="location.href = ' +
-                "'../Checklist/model.html'" +
+                "'/install-config'" +
                 '" class="btn btn-warning" style="width: 200px; height: 80px; margin-top: 15px;">Installation & config</button></td>',
                 '', '',
                 '<td align="left" class="pt-3-half" contenteditable="false" rowspan="7"><button type="button" onclick="location.href = ' +
-                "'../Technical_Doc/Cooler.html'" +
+                "'/technical-cooler-onboarding'" +
                 '" class="btn btn-warning" style="width: 200px; height: 150px; margin-top: 55px;">Cooler Onboarding</button></td>',
                 '', '', '', '', '', '',
                 '<td align="left" class="pt-3-half" contenteditable="false"></td>',

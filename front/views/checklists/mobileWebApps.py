@@ -11,9 +11,16 @@ class ChecklistsMobileWebAppsView(View):
     def get(self, request):
         page_name = 'mobileWebApps'
         try:
-            # page_content = PageContents.objects.filter(page_name=page_name)[0]
-            # statusInit = json.loads(page_content.status)
-            # ownerInit = json.loads(page_content.owners)
+            page_content = PageContents.objects.filter(page_name=page_name)
+            if page_content:
+                page_content = page_content[0]
+                statusInit = json.loads(page_content.status)
+                ownerInit = json.loads(page_content.owners)
+            else:
+                ownerInit = [10, 3, 3, 2, 2, 3, 2, 3, 10, 3, 3, 3, 3, 3, 10,
+                            4, 4, 4, 4, 4, 4, 10, 3, 10, 10, 3, 7, 7, 7, 7, 7, 7, 7]
+                statusInit = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             id = [
                 '1', '1.1', '1.2', '1.3', '1.4', '1.5', '1.6', '1.7',
                 '2', '2.1', '2.2', '2.3', '2.4', '2.5',
@@ -30,8 +37,6 @@ class ChecklistsMobileWebAppsView(View):
             ]
             bold = [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0,
                     0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0]
-            ownerInit = [10, 3, 3, 2, 2, 3, 2, 3, 10, 3, 3, 3, 3, 3, 10,
-                         4, 4, 4, 4, 4, 4, 10, 3, 10, 10, 3, 7, 7, 7, 7, 7, 7, 7]
             owners = [
                 {"value": str("1"), "text": "Maxerience"},
                 {"value": str("2"), "text": "Global"},
@@ -45,8 +50,6 @@ class ChecklistsMobileWebAppsView(View):
                 {"value": str("0"), "text": "Max & Provider"},
                 {"value": str("10"), "text": ""}
             ]
-            statusInit = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                          0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             statuses = [
                 {"value": str("0"), "text": "Not Started"},
                 {"value": str("1"), "text": "In Progress"},

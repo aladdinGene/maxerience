@@ -11,10 +11,14 @@ class ChecklistsInstallationConfigView(View):
     def get(self, request):
         page_name = 'installationConfig'
         try:
-            page_content = PageContents.objects.filter(page_name=page_name)[0]
-            statusInit = json.loads(page_content.status)
-            ownerInit = json.loads(page_content.owners)
-            print(statusInit, ownerInit)
+            page_content = PageContents.objects.filter(page_name=page_name)
+            if page_content:
+                page_content = page_content[0]
+                statusInit = json.loads(page_content.status)
+                ownerInit = json.loads(page_content.owners)
+            else:
+                ownerInit = [10, 10, 1, 1, 1, 1, 10, 1, 1, 1, 10, 9, 9, 9, 9]
+                statusInit = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             id = [
                 '4', '4.1', '4.1.1', '4.1.2', '4.1.3', '4.1.4',
                 '4.2', '4.2.1', '4.2.2', '4.2.3',
@@ -26,7 +30,6 @@ class ChecklistsInstallationConfigView(View):
                 "&nbsp;Physical", "&nbsp;&nbsp;Retrofit", "&nbsp;&nbsp;HW health check", "&nbsp;&nbsp;Dashboard verification", "&nbsp;&nbsp;Tracker (red line) adjusment"
             ]
             bold = [1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0]
-            # ownerInit = [10, 10, 1, 1, 1, 1, 10, 1, 1, 1, 10, 9, 9, 9, 9]
             owners = [
                 {"value": str("1"), "text": "Maxerience"},
                 {"value": str("2"), "text": "Global"},
@@ -40,7 +43,6 @@ class ChecklistsInstallationConfigView(View):
                 {"value": str("0"), "text": "Max & Provider"},
                 {"value": str("10"), "text": ""}
             ]
-            # statusInit = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             statuses = [
                 {"value": str("0"), "text": "Not Started"},
                 {"value": str("1"), "text": "In Progress"},

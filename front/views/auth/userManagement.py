@@ -26,8 +26,10 @@ class UserManagementView(View):
             post_value = request.POST
             put_value = QueryDict(request.body)
             is_active = put_value.get('is_active')
+            is_staff = put_value.get('is_staff')
             user = User.objects.filter(id=id)[0]
             user.is_active = is_active
+            user.is_staff = is_staff
             user.save()
 
         except Exception as e:

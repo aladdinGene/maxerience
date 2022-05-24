@@ -1,6 +1,5 @@
 {% extends './main-layout.html' %}
 {% load static %}
-<!-- <link href="{% static 'assets/css/bootstrap-table.min.css' %}" rel="stylesheet" type="text/css" /> -->
 {% block css %}
 {% endblock %}
 {% block content %}
@@ -9,42 +8,6 @@
             <div class="card">
                 <div class="card-body">
                   <div id="table" class="table-editable">
-                    <!-- <button id="demo-delete-row" class="btn btn-danger btn-sm" disabled><i class="mdi mdi-close mr-1"></i>Delete</button>
-                    <table id="demo-custom-toolbar"  data-toggle="table"
-                            data-toolbar="#demo-delete-row"
-                            data-search="true"
-                            data-show-refresh="true"
-                            data-show-columns="true"
-                            data-sort-name="id"
-                            data-page-list="[5, 10, 20]"
-                            data-page-size="5"
-                            data-pagination="true" data-show-pagination-switch="true" class="table-borderless">
-                        <thead class="thead-light">
-                          <tr>
-                              <th data-field="state" data-checkbox="true"></th>
-                              <th data-field="id" data-sortable="true" data-formatter="invoiceFormatter">Email</th>
-                              <th data-field="name" data-sortable="true">Status</th>
-                              <th data-field="date" data-sortable="true" data-formatter="dateFormatter">Administrator</th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                            {% for user in users %}
-                                <tr user-id="{{ user.id }}">
-                                    <td></td>
-                                    <td>
-                                        {{ user.email }}
-                                    </td>
-                                    <td>
-                                        {{ user.is_active }}
-                                    </td>
-                                    <td>
-                                      {{ user.is_staff }}
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table> -->
                     <div class="d-flex justify-content-start mb-2">
                       <button id="delete-row" class="btn btn-danger btn-sm" disabled><i class="mdi mdi-close mr-1"></i>Delete</button>
                     </div>
@@ -65,8 +28,9 @@
                         </tr>
                       </thead>
                       <tbody>
-                        {% for user in users %}
-                            <tr user-id="{{ user.id }}">
+                        {% for userRow in users %}
+                          {% if userRow.id != user.id %}
+                            <tr user-id="{{ userRow.id }}">
                                 <td class="pt-3-half">
                                   <div class="checkbox checkbox-danger">
                                     <input id="checkbox{{ forloop.counter }}" type="checkbox">
@@ -76,13 +40,13 @@
                                   </div>
                                 </td>
                                 <td class="pt-3-half" contenteditable="false" align="left">
-                                    {{ user.email }}
+                                    {{ userRow.email }}
                                 </td>
                                 <td class="pt-3-half" align="left">
-                                  <div class="custom-control custom-switch status">
-                                    <input type="checkbox" class="custom-control-input" id="statusSwitch{{ forloop.counter }}" {% if user.is_active %}checked{% endif %}>
+                                  <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input status" id="statusSwitch{{ forloop.counter }}" {% if userRow.is_active %}checked{% endif %}>
                                     <label class="custom-control-label" for="statusSwitch{{ forloop.counter }}">
-                                      {% if user.is_active %}
+                                      {% if userRow.is_active %}
                                         Active
                                       {% else %}
                                         Inactive
@@ -91,10 +55,10 @@
                                   </div>
                                 </td>
                                 <td class="pt-3-half" align="left">
-                                  <div class="custom-control custom-switch role">
-                                    <input type="checkbox" class="custom-control-input" id="roleSwitch{{ forloop.counter }}" {% if user.is_staff %}checked{% endif %}>
+                                  <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input role" id="roleSwitch{{ forloop.counter }}" {% if userRow.is_staff %}checked{% endif %}>
                                     <label class="custom-control-label" for="roleSwitch{{ forloop.counter }}">
-                                      {% if user.is_staff %}
+                                      {% if userRow.is_staff %}
                                         Administrator
                                       {% else %}
                                         User
@@ -103,6 +67,7 @@
                                   </div>
                                 </td>
                             </tr>
+                          {% endif %}
                         {% endfor %}
                       </tbody>
                     </table>
@@ -118,10 +83,5 @@ var page_name = 'user-management';
 {% endblock %}
 
 {% block script %}
-<!-- Plugins js-->
-<!-- <script src="{% static 'assets/js/bootstrap-table.min.js' %}"></script> -->
-
-<!-- Page js-->
-<!-- <script src="{% static 'assets/js/bootstrap-tables.init.js' %}"></script> -->
 <script src="{% static 'assets/js/user-management.js' %}"></script>
 {% endblock %}

@@ -1,31 +1,5 @@
-const removeUser = (self, userId) => {
-    jQuery.ajax({
-        type: "DELETE",
-        url: '/user-management/'+userId,
-        headers: {'X-CSRFToken': csrf_token},
-        data: {
-            csrfmiddlewaretoken: csrf_token,
-            id: userId
-        },
-        dataType: 'json',
-        async: false,
-        success: function (result) {
-            if (result.status === 200) {
-                tata.success('success', result.message)
-                $(self).parent().parent().remove()
-                var firstTds = $('tbody>tr>td:first-child')
-                for(var i=0;i<firstTds.length;i++) {
-                    $(firstTds[i]).text(i+1);
-                }
-            } else {
-                tata.error('Error', result.message)
-            }
-        }
-    });
-}
-
 $(document).ready(function(){
-    
+
 $("#all-check").change(function(){
     const allChecked = $(this).get(0).checked;
     if(allChecked) $("#delete-row").get(0).disabled = false;
@@ -43,6 +17,29 @@ $("#delete-row").click(function(){
             delUsers.push($(ele).closest('tr').attr('user-id'))
         }
     })
+
+    jQuery.ajax({
+        type: "DELETE",
+        url: '/user-management/'+delUsers[0],
+        headers: {'X-CSRFToken': csrf_token},
+        data: {
+            csrfmiddlewaretoken: csrf_token,
+            id: JSON.stringify(delUsers)
+        },
+        dataType: 'json',
+        async: false,
+        success: function (result) {
+            if (result.status === 200) {
+                tata.success('success', result.message)
+                $('tbody tr').map((index, ele) => {
+                    if($(ele).find('.checkbox-danger input[type=checkbox]:checked').length) $(ele).remove();
+                })
+                $("#all-check").get(0).checked = false;
+            } else {
+                tata.error('Error', result.message)
+            }
+        }
+    });
 })
 
 $('body').on('click', 'tbody .checkbox input[type=checkbox]', function(){

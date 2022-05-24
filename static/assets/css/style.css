@@ -142,6 +142,15 @@ thead{
     color: white;
 }
 
+table.table{
+    color: #111;
+}
+
+div#table{
+    overflow-x: auto;
+    width: 100%;
+}
+
 .user-management thead{
     background-color: #FFF;
     color: #333;

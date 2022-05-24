@@ -13,10 +13,7 @@ body{
 }
 
 .logo{
-    margin-top: 5px;
-    margin-left: 15px;
-    width: 140px;
-    height: 90px;
+    padding: 10px 20px;
 }
 
 .btn-warning{
@@ -174,7 +171,7 @@ select{
 }
 
 .project_imgCard table{
-    margin-left: 20px;
+    /* margin-left: 20px; */
 }
 
 .project_imgCard table{

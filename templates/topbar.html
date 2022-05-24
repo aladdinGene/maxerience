@@ -1,0 +1,77 @@
+{% load static %}
+<!-- Topbar Start -->
+<div class="navbar-custom">
+    <div class="container-fluid">
+        <ul class="list-unstyled topnav-menu float-right mb-0">
+    
+            <li class="dropdown d-inline-block d-lg-none">
+                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="fe-search noti-icon"></i>
+                </a>
+                <div class="dropdown-menu dropdown-lg dropdown-menu-right p-0">
+                    <form class="p-3">
+                        <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                    </form>
+                </div>
+            </li>
+    
+            <li class="dropdown d-none d-lg-inline-block">
+                <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen" href="#">
+                    <i class="fe-maximize noti-icon"></i>
+                </a>
+            </li>
+    
+            <li class="dropdown notification-list">
+                <a href="javascript:void(0);" class="nav-link right-bar-toggle waves-effect waves-light">
+                    <i class="fe-settings noti-icon"></i>
+                </a>
+            </li>
+    
+        </ul>
+    
+        <!-- LOGO -->
+        <div class="logo-box">
+            <a href="/" class="logo logo-dark">
+                <span class="logo-sm">
+                    <img src="{% static 'assets/image/logo-sm.png' %}"alt="" height="50">
+                    <!-- <span class="logo-lg-text-light">UBold</span> -->
+                </span>
+                <span class="logo-lg">
+                    <img src="{% static 'assets/image/logo.png' %}"alt="" height="50">
+                    <!-- <span class="logo-lg-text-light">U</span> -->
+                </span>
+            </a>
+    
+            <a href="/" class="logo logo-light">
+                <span class="logo-sm">
+                    <img src="{% static 'assets/image/logo-sm.png' %}"alt="" height="50">
+                </span>
+                <span class="logo-lg">
+                    <img src="{% static 'assets/image/logo.png' %}"alt="" height="50">
+                </span>
+            </a>
+        </div>
+    
+        <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+            <li>
+                <button class="button-menu-mobile waves-effect waves-light">
+                    <i class="fe-menu"></i>
+                </button>
+            </li>
+
+            <li>
+                <!-- Mobile menu toggle (Horizontal Layout)-->
+                <a class="navbar-toggle nav-link" data-toggle="collapse" data-target="#topnav-menu-content">
+                    <div class="lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </a>
+                <!-- End mobile menu toggle-->
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- end Topbar -->

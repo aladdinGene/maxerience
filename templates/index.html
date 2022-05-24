@@ -4,70 +4,132 @@
 <link rel="stylesheet" href="{% static 'assets/css/pdf_upload.css' %}">
 {% endblock %}
 {% block content %}
-<div class="cardbody">
-    <div class="newrow">
-        <div class="newcard">
-            <div class="newcard-header">
-                <button class="btn btn-warning headerbtn"><b>Process Framework</b></button><br /><br /><br />
-            </div>
-            <div class="card-body">
-                <a href = '/project-lifecycle' class="btn btn-secondary">Project Lifecycle</a><br /><br /><br />
-                <a href = '/sku-creation' class="btn btn-secondary">SKU Creation</a><br /><br /><br />
-                <a href = '/cooler-onboarding' class="btn btn-secondary">Cooler Onboarding</a><br /><br /><br />
-                <a href = '/support' class="btn btn-secondary">Support</a><br /><br /><br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card-box">
+                <h4 class="header-title mb-4"></h4>
+                <ul class="nav nav-tabs nav-bordered">
+                    <li class="nav-item">
+                        <a href="#tabProcessFramework" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                            Process Framework
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tabProcessTimeline" data-toggle="tab" aria-expanded="false" class="nav-link">
+                            Process Timeline
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tabChecklists" data-toggle="tab" aria-expanded="false" class="nav-link">
+                            Checklists
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#tabTechnicalDocumentation" data-toggle="tab" aria-expanded="false" class="nav-link">
+                            Technical Documentation
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane show active" id="tabProcessFramework">
+                        <a href = '/project-lifecycle' class="btn btn-secondary">Project Lifecycle</a>
+                        <a href = '/sku-creation' class="btn btn-secondary">SKU Creation</a>
+                        <a href = '/cooler-onboarding' class="btn btn-secondary">Cooler Onboarding</a>
+                        <a href = '/support' class="btn btn-secondary">Support</a>
+                    </div>
+                    <div class="tab-pane" id="tabProcessTimeline">
+                        <a href = '/timeline-high' class="btn btn-secondary">Timeline(High)</a>
+                        <a href = '/timeline-detailed' class="btn btn-secondary">Timeline(Detailed)</a>
+                    </div>
+                    <div class="tab-pane" id="tabChecklists">
+                        <a href = '/project' class="btn btn-secondary">Project</a>
+                        <a href = '/master-data-model' class="btn btn-secondary">Master Data & Model</a>
+                        <a href = '/mobile-web-apps' class="btn btn-secondary">Mobile & Web Apps</a>
+                        <a href = '/payment-integration' class="btn btn-secondary">Payment Integration</a>
+                        <a href = '/install-config' class="btn btn-secondary">Installation & Config</a>
+                        <a href = '/material-list' class="btn btn-secondary">Material List</a>
+                        <a href = '/checklist-cooler-onboarding' class="btn btn-secondary">Cooler Onboarding</a>
+                        <a href = '/cooler-health-check' class="btn btn-secondary">Cooler Health Check</a>
+                        <a href = '/dashboards' class="btn btn-secondary">Dashboards (PBI & Online Cooler Monitoring)</a>
+                    </div>
+                    <div class="tab-pane" id="tabTechnicalDocumentation">
+                        <a href = '/solution' class="btn btn-secondary">Solution</a>
+                        <a href = '/installation-manual' class="btn btn-secondary">Installation Manual</a>
+                        <a href = '/technical-cooler-onboarding' class="btn btn-secondary">Cooler Onboarding</a>
+                        <a href = '/transaction' class="btn btn-secondary">Transaction</a>
+                        <a href = '/operational' class="btn btn-secondary">Operational</a>
+                        <a href = '/technical-cooler-health-check' class="btn btn-secondary">Cooler Health Check</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="newrow">
-        <div class="newcard">
-            <div class="newcard-header">
-                <button class="btn btn-warning headerbtn"><b>Process Timeline</b></button><br /><br /><br />
-            </div>
-            <div class="card-body">
-                <a href = '/timeline-high' class="btn btn-secondary">Timeline(High)</a><br /><br /><br />
-                <a href = '/timeline-detailed' class="btn btn-secondary">Timeline(Detailed)</a><br /><br /><br />
-            </div>
-        </div>
-    </div>
-
-    <div class="newrow">
-        <div class="newcard">
-            <div class="newcard-header">
-                <button class="btn btn-warning headerbtn"><b>Ckecklists</b></button><br /><br /><br />
-            </div>
-            <div class="card-body">
-                <a href = '/project' class="btn btn-secondary">Project</a><br /><br /><br />
-                <a href = '/master-data-model' class="btn btn-secondary">Master Data & Model</a><br /><br /><br />
-                <a href = '/mobile-web-apps' class="btn btn-secondary">Mobile & Web Apps</a><br /><br /><br />
-                <a href = '/payment-integration' class="btn btn-secondary">Payment Integration</a><br /><br /><br />
-                <a href = '/install-config' class="btn btn-secondary">Installation & Config</a><br /><br /><br />
-                <a href = '/material-list' class="btn btn-secondary">Material List</a><br /><br /><br />
-                <a href = '/checklist-cooler-onboarding' class="btn btn-secondary">Cooler Onboarding</a><br /><br /><br />
-                <a href = '/cooler-health-check' class="btn btn-secondary">Cooler Health Check</a><br /><br /><br />
-                <a href = '/dashboards' class="btn btn-secondary">Dashboards (PBI & Online Cooler Monitoring)</a><br /><br /><br />
-            </div>
-        </div>
-    </div>
-
-
-    <div class="newrow">
-        <div class="newcard">
-            <div class="newcard-header">
-                <button class="btn btn-warning headerbtn"><b>Technical Documentation</b></button><br /><br /><br />
-            </div>
-            <div class="card-body">
-                <a href = '/solution' class="btn btn-secondary">Solution</a><br /><br /><br />
-                <a href = '/installation-manual' class="btn btn-secondary">Installation Manual</a><br /><br /><br />
-                <a href = '/technical-cooler-onboarding' class="btn btn-secondary">Cooler Onboarding</a><br /><br /><br />
-                <a href = '/transaction' class="btn btn-secondary">Transaction</a><br /><br /><br />
-                <a href = '/operational' class="btn btn-secondary">Operational</a><br /><br /><br />
-                <a href = '/technical-cooler-health-check' class="btn btn-secondary">Cooler Health Check</a><br /><br /><br />
-            </div>
-        </div>
-    </div>
-
 </div>
+
+    <!-- <div class="newrow">
+        <div class="newcard">
+            <div class="newcard-header">
+                <button class="btn btn-warning headerbtn"><b>Process Framework</b></button>
+            </div>
+            <div class="card-body">
+                <a href = '/project-lifecycle' class="btn btn-secondary">Project Lifecycle</a>
+                <a href = '/sku-creation' class="btn btn-secondary">SKU Creation</a>
+                <a href = '/cooler-onboarding' class="btn btn-secondary">Cooler Onboarding</a>
+                <a href = '/support' class="btn btn-secondary">Support</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="newrow">
+        <div class="newcard">
+            <div class="newcard-header">
+                <button class="btn btn-warning headerbtn"><b>Process Timeline</b></button>
+            </div>
+            <div class="card-body">
+                <a href = '/timeline-high' class="btn btn-secondary">Timeline(High)</a>
+                <a href = '/timeline-detailed' class="btn btn-secondary">Timeline(Detailed)</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="newrow">
+        <div class="newcard">
+            <div class="newcard-header">
+                <button class="btn btn-warning headerbtn"><b>Ckecklists</b></button>
+            </div>
+            <div class="card-body">
+                <a href = '/project' class="btn btn-secondary">Project</a>
+                <a href = '/master-data-model' class="btn btn-secondary">Master Data & Model</a>
+                <a href = '/mobile-web-apps' class="btn btn-secondary">Mobile & Web Apps</a>
+                <a href = '/payment-integration' class="btn btn-secondary">Payment Integration</a>
+                <a href = '/install-config' class="btn btn-secondary">Installation & Config</a>
+                <a href = '/material-list' class="btn btn-secondary">Material List</a>
+                <a href = '/checklist-cooler-onboarding' class="btn btn-secondary">Cooler Onboarding</a>
+                <a href = '/cooler-health-check' class="btn btn-secondary">Cooler Health Check</a>
+                <a href = '/dashboards' class="btn btn-secondary">Dashboards (PBI & Online Cooler Monitoring)</a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="newrow">
+        <div class="newcard">
+            <div class="newcard-header">
+                <button class="btn btn-warning headerbtn"><b>Technical Documentation</b></button>
+            </div>
+            <div class="card-body">
+                <a href = '/solution' class="btn btn-secondary">Solution</a>
+                <a href = '/installation-manual' class="btn btn-secondary">Installation Manual</a>
+                <a href = '/technical-cooler-onboarding' class="btn btn-secondary">Cooler Onboarding</a>
+                <a href = '/transaction' class="btn btn-secondary">Transaction</a>
+                <a href = '/operational' class="btn btn-secondary">Operational</a>
+                <a href = '/technical-cooler-health-check' class="btn btn-secondary">Cooler Health Check</a>
+            </div>
+        </div>
+    </div> -->
+    
 {% endblock %}
 {% block script %}
 {% endblock %}

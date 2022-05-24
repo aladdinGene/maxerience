@@ -61,10 +61,6 @@ body{
     font-size: 1.2em;
 }
 
-.card-body{
-    border-left: solid 1px var(--grey-color);
-}
-
 .top-box{
     margin-top: 50px;
     border-bottom: solid 1px var(--grey-color);

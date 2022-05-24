@@ -160,7 +160,7 @@ body {
 .menu-arrow {
   transition: transform 0.15s;
   position: absolute;
-  right: 20px;
+  right: 10px;
   display: inline-block;
   font-family: "Material Design Icons";
   text-rendering: auto;

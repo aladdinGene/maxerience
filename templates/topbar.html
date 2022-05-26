@@ -4,11 +4,32 @@
     <div class="container-fluid">
         <ul class="list-unstyled topnav-menu float-right mb-0">
     
-            <li class="dropdown notification-list">
+            <!-- <li class="dropdown notification-list">
                 <a href="/logout" class="nav-link right-bar-toggle waves-effect waves-light">
                     <i class="fe-log-out"></i>
                     <span>Logout</span>
                 </a>
+            </li> -->
+
+            <li class="dropdown notification-list topbar-dropdown" style="margin-right: 20px;">
+                <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <i class="fas fa-user-alt"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+    
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <i class="fe-user"></i>
+                        <span>{{ user.username }}</span>
+                    </a>
+    
+                    <div class="dropdown-divider"></div>
+    
+                    <a href="/logout" class="dropdown-item notify-item">
+                        <i class="fe-log-out"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
             </li>
     
         </ul>

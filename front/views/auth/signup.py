@@ -40,4 +40,4 @@ class SignUpView(View):
         except Exception as e:
             return JsonResponse({'status': 400, 'message': str(e)})
 
-        return JsonResponse({'status': 200, 'message': 'You have to wait until administrator approve.'})
+        return JsonResponse({'status': 200, 'message': ' Your registration is complete please wait for administrator to validate your account'})
